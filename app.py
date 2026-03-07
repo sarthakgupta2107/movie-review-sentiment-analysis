@@ -18,7 +18,6 @@ def predict():
     prediction = model.predict(data)[0]
     return render_template("index.html", result=prediction)
 
-import os
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
