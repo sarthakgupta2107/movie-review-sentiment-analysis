@@ -1,32 +1,45 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <title>Movie Review Sentiment Analysis</title>
 <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
 
-  <div style="background:#000; color:white; padding:10px;">
-<marquee behavior="scroll" direction="left" scrollamount="6">
-🚀 Movie Review Sentiment Analysis Project | Developed by Sarthak Gupta
+<div class="marquee">
+<marquee scrollamount="7">
+🚀 Movie Review Sentiment Analysis | Developed by Sarthak Gupta (BCA Final Year)
 </marquee>
 </div>
+
+<div class="container">
 
 <h2>Movie Review Sentiment Analysis</h2>
 
 <form action="/predict" method="post">
-<textarea name="review" placeholder="Write your movie review here..." rows="6" cols="60"></textarea><br><br>
-<button type="submit">Check Sentiment</button>
+
+<textarea name="review" rows="5" placeholder="Write your movie review here..."></textarea>
+
+<br>
+
+<button type="submit">Analyze Sentiment</button>
+
 </form>
 
 {% if result %}
-<h3>Sentiment: {{ result }}</h3>
+
+<div class="result {% if result == 'positive' %}positive{% else %}negative{% endif %}">
+Sentiment: {{ result }}
+</div>
+
 {% endif %}
 
-  <footer style="position:fixed; bottom:0; width:100%; background:#f2f2f2; padding:10px; text-align:center; font-size:14px;">
-    © 2026 Sarthak Gupta | Movie Review Sentiment Analysis Project
+</div>
+
+<footer>
+© 2026 Sarthak Gupta | BCA Final Year Project
 </footer>
-  
+
 </body>
 </html>
