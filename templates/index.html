@@ -9,13 +9,13 @@
 
 <div class="marquee">
 <marquee scrollamount="7">
-🚀 Movie Review Sentiment Analysis | Developed by Sarthak Gupta (BCA Final Year)
+🎬 Movie Review Sentiment Analysis | Developed by Sarthak Gupta
 </marquee>
 </div>
 
 <div class="container">
 
-<h2>Movie Review Sentiment Analysis</h2>
+<h2 class="typing">Movie Review Sentiment Analysis</h2>
 
 <form action="/predict" method="post">
 
@@ -30,7 +30,13 @@
 {% if result %}
 
 <div class="result {% if result == 'positive' %}positive{% else %}negative{% endif %}">
-Sentiment: {{ result }}
+
+{% if result == 'positive' %}
+😊 Positive Review
+{% else %}
+😡 Negative Review
+{% endif %}
+
 </div>
 
 {% endif %}
