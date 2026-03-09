@@ -4,32 +4,38 @@ import os
 
 app = Flask(__name__)
 
-# Load model
+# Load trained model and vectorizer
 model = pickle.load(open("model.pkl", "rb"))
 vectorizer = pickle.load(open("vectorizer.pkl", "rb"))
 
+# Home page
 @app.route("/")
 def home():
     return render_template("index.html")
 
+
+# Prediction route
 @app.route("/predict", methods=["POST"])
 def predict():
 
     review = request.form["review"]
 
+    # Convert text to vector
     data = vectorizer.transform([review])
 
+    # Predict sentiment
     prediction = model.predict(data)[0]
 
-    # convert to text
-    if prediction.lower() == "positive":
-        result = "Positive 😊"
+    # Convert result
+    if prediction == 1:
+        result = "Positive Review 😊"
     else:
-        result = "Negative 😡"
+        result = "Negative Review 😡"
 
     return render_template("index.html", result=result)
 
-# Render deployment
+
+# Run app for Render
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
