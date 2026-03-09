@@ -29,18 +29,12 @@
 
 {% if result %}
 
-<div class="result {% if result == 'positive' %}positive{% else %}negative{% endif %}">
-
-{% if result == 'positive' %}
-😊 Positive Review
+<div class="result">
+{% if result.lower() == 'positive' %}
+<span class="positive">😊 Positive Review</span>
 {% else %}
-😡 Negative Review
+<span class="negative">😡 Negative Review</span>
 {% endif %}
-
-</div>
-
-{% endif %}
-
 </div>
 
 <footer>
